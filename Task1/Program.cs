@@ -4,17 +4,29 @@
 
 // 1, -7, 567, 89, 223-> 3
 
-Random rand = new Random();
-int number = rand.Next(1, 11);
-int[] array = new int[number];
-int count = 0;
-
-for (int i = 0; i < number; i++)
+int[] FillArray(int number)
 {
-    Console.Write($"Введите число: ");
-    array[i] = Convert.ToInt32(Console.ReadLine());
-    if (array[i] > 0)
-    count++;
+    int[] array = new int[number];
+    for (int i = 0; i < number; i++)
+    {
+        Console.Write($"Введите число: ");
+        array[i] = Convert.ToInt32(Console.ReadLine());
+    }
+    return array;
 }
 
-System.Console.WriteLine($"{count} из {number} введённых чисел больше нуля.");
+void PositiveNumCounting(int[] array, int number)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] > 0)
+            count++;
+    }
+    System.Console.WriteLine($"{count} из {number} введённых чисел больше нуля.");
+}
+
+Random rand = new Random();
+int number = rand.Next(1, 11);
+
+PositiveNumCounting((FillArray(number)), number);
